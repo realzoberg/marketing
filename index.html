@@ -1,0 +1,732 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Cache-Control" content="no-cache" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Lang" content="ru" />
+  <title>Слаанеш-тест</title>
+
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+
+    <script type="text/javascript">
+      $(function() {
+        var questions = [
+        {
+          text:"Сообщите, пожалуйста, некоторые сведения о себе",
+          type:"initial",
+          answer: null
+        },
+        {
+          text:"Укажите Ваш пол",
+          type:"initial",
+          answer: null
+        },
+        {
+          text:"Укажите, к какой возрастной группе Вы относитесь",
+          type:"initial",
+          answer: null
+        },
+        {
+          text:"Сколько человек в Вашей семье?",
+          type:"initial",
+          answer: null
+        },
+        {
+          text:"Ваше образование",
+          type:"initial",
+          answer: null
+        },
+        {
+          text:"Ваш род занятий",
+          type:"initial",
+          answer: null
+        },
+        {
+          text:"К какой категории граждан по уровню доходов Вы можете себя отнести",
+          type:"initial",
+          answer: null
+        },
+        {
+          text:"Как Вы оцениваете свое здоровье",
+          type:"initial",
+          answer: null
+        },
+        {
+          text:"В какой мере употребляете спиртные напитки",
+          type:"initial",
+          answer: null
+        },
+        {
+          text:"Вы курите?",
+          type:"initial",
+          answer: null
+        },
+        {
+          text:"Вам предлагается тестовый материал, состоящий из 70 вопросов (суждений). Внимательно прочитайте утверждение и, не раздумывая очень долго, выберите один из вариантов ответа.",
+          type:"initial",
+          answer: null
+        },
+        {
+          text:"Время от времени мне очень хочется выпить, чтобы расслабиться",
+          type:["alcohol"],
+          answer: null
+        },
+        {
+          text:"В свое свободное время я чаще всего смотрю телевизор",
+          type:["tv"],
+          answer: null
+        },
+        {
+          text:"Я считаю, что одиночество – это самое страшное в жизни",
+          type:["foreveralone"],
+          answer: null
+        },
+        {
+          text:"Я – человек азартный и люблю азартные игры",
+          type:["games"],
+          answer: null
+        },
+        {
+          text:"Межполовые отношения – это самое большое удовольствие в жизни",
+          type:["sex"],
+          answer: null
+        },
+        {
+          text:"Я довольно часто ем не от голода, а для получения удовольствия",
+          type:["food"],
+          answer: null
+        },
+        {
+          text:"Я соблюдаю религиозные ритуалы",
+          type:["pgm"],
+          answer: null
+        },
+        {
+          text: "Я все время думаю о работе, о том, как сделать ее лучше",
+          type:["work"],
+          answer: null
+        },
+        {
+          text: "Я довольно часто принимаю лекарства",
+          type:["drugs"],
+          answer: null
+        },
+        {
+          text: "Я провожу очень много времени за компьютером",
+          type:["computer"],
+          answer: null          
+        },
+        {
+          text: "Не представляю свою жизнь без сигарет",
+          type: ["smoke","drugs"],
+          answer: null
+        },
+        {
+          text: "Я активно интересуюсь проблемами здоровья",
+          type: ["drugs"],
+          answer: null          
+        },
+        {
+          text: "Я пробовал наркотические вещества",
+          type: ["drugs"],
+          answer: null
+        },
+        {
+          text: "Мне тяжело бороться со своими привычками",
+          type: ["drugs","smoke","alcohol"]
+        },
+        {
+          text: "Иногда я не помню произошедшего во время опьянения",
+          type: ["alcohol"]
+        },
+        {
+          text: "Я могу долго щелкать пультом в поисках чего-нибудь интересного по телевизору",
+          type: ["tv"]
+        },
+        {
+          text: "Главное чтобы любимый человек всегда был рядом",
+          type: ["sex"]
+        },
+        {
+          text: "Время от времени я посещаю игровые автоматы",
+          type: ["games"]
+        },
+        {
+          text: "Я не думаю о межполовых отношениях только когда я сплю",
+          type: ["sex"]
+        },
+        {
+          text: "Я постоянно думаю о еде, представляю себе разные вкусности",
+          type: ["food"]
+        },
+        {
+          text: "Я довольно активный член религиозной общины",
+          type: ["pgm"]
+        },
+        {
+          text: "Я не умею отдыхать, чувствую себя плохо во время выходных",
+          type: ["work"]
+        },
+        {
+          text: "Лекарства – самый простой способ улучшить самочувствие",
+          type: ["drugs"]
+        },
+        {
+          text: "Компьютер – это реальная возможность жить полной жизнью",
+          type: ["computer"]
+        },
+        {
+          text: "Сигареты всегда со мной",
+          type: ["smoke"]
+        },
+        {
+          text: "На поддержание здоровья не жалею ни сил, ни денег, ни времени",
+          type: ["drugs"]
+        },
+        {
+          text: "Попробовать наркотик – это получить интересный жизненный урок",
+          type: ["drugs"]
+        },
+        {
+          text: "Я считаю, что каждый человек от чего то зависим",
+          type: ["drugs"]
+        },
+        {
+          text: "Бывает, что я чуть-чуть перебираю, когда выпиваю",
+          type: ["alcohol"]
+        },
+        {
+          text: "Телевизор включен большее время моего пребывания дома",
+          type: ["tv"]
+        },
+        {
+          text: "Когда я не вместе с любимым человеком, я постоянно думаю о нем",
+          type: ["sex"]
+        },
+        {
+          text: "Игра дает самые острые ощущения в жизни",
+          type: ["games"]
+        },
+        {
+          text: "Я готов идти на \"случайные связи\", ведь воздержание для меня крайне тяжело",
+          type: ["sex"]
+        },
+        {
+          text: "Если кушанье очень вкусное, то я не удержусь от добавки",
+          type: ["food"]
+        },
+        {
+          text: "Считаю что религия – единственное, что может спасти мир",
+          type: ["pgm"]
+        },
+        {
+          text: "Близкие часто жалуются, что я постоянно работаю",
+          type: ["work"]
+        },
+        {
+          text: "В моем доме много медицинских и подобных препаратов",
+          type: ["drugs"]
+        },
+        {
+          text: "Иногда, сидя у компьютера, я забываю поесть или о каких то делах",
+          type: ["computer"]
+        },
+        {
+          text: "Сигарета это самый простой способ расслабиться",
+          type: ["smoke"]
+        },
+        {
+          text: "Я читаю медицинские журналы и газеты, смотрю передачи о здоровье",
+          type: ["drugs"]
+        },
+        {
+          text: "Наркотик дает самые сильные ощущения из всех возможных",
+          type: ["drugs"]
+        },
+        {
+          text: "Привычка – вторая натура, и избавиться от нее глупо",
+          type: ["drugs", "alcohol", "smoke"]
+        },
+        {
+          text: "Алкоголь в нашей жизни – основное средство расслабления и повышения настроения",
+          type: ["alcohol"]
+        },
+        {
+          text: "Если сломался телевизор, то я не буду знать, чем себя развлечь вечером",
+          type: ["tv"]
+        },
+        {
+          text: "Быть покинутым любимым человеком – самое большое несчастье, которое может произойти",
+          type: ["sex"]
+        },
+        {
+          text: "Я понимаю азартных игроков, которые могут в одну ночь выиграть состояние, а в другую проиграть два",
+          type: ["games"]
+        },
+        {
+          text: "Самое страшное это получить физическое увечье, которое сделает невозможным удовлетворить партнера в постели",
+          type: ["sex"]
+        },
+        {
+          text: "При походе в магазин не могу удержаться, что бы не купить что нить вкусненькое",
+          type: ["food"]
+        },
+        {
+          text: "Самое главное в жизни – чтобы жизнь была наполнена религией",
+          type: ["pgm"]
+        },
+        {
+          text: "Мера ценности человека заключается в том, на сколько он отдает себя работе",
+          type: ["work"]
+        },
+        {
+          text: "Я довольно часто принимаю лекарства",
+          type: ["drugs"]
+        },
+        {
+          text: "\"Виртуальная реальность\" более интересна, чем обычная жизнь",
+          type: ["computer"]
+        },
+        {
+          text: "Я ежедневно курю",
+          type: ["smoke"]
+        },
+        {
+          text: "Я стараюсь неотступно соблюдать правила здорового образа жизни",
+          type: ["pgm"]
+        },
+        {
+          text: "Иногда я употребляю средства, считающиеся наркотическими",
+          type: ["drugs"]
+        },
+        {
+          text: "Человек – существо слабое, нужно быть терпимым к его вредным привычкам",
+          type: ["drugs","alcohol","smoke"]
+        },
+        {
+          text: "Мне нравится выпить и повеселиться в веселой компании",
+          type: ["alcohol"]
+        },
+        {
+          text: "В наше время почти все можно узнать из телевизора",
+          type: ["tv"]
+        },
+        {
+          text: "Любить и быть любимым это главное в жизни",
+          type: ["sex"]
+        },
+        {
+          text: "Игра – это реальный шанс сорвать куш, выиграть много денег",
+          type: ["games"]
+        },
+        {
+          text: "Межполовые отношения – это лучшее времяпровождение",
+          type: ["sex"]
+        },
+        {
+          text: "Я очень люблю готовить и делаю это так часто, как могу",
+          type: ["food"]
+        },
+        {
+          text: "Я часто посещаю религиозные заведения",
+          type: ["pgm"]
+        },
+        {
+          text: "Я считаю, что человек должен работать на совесть, ведь деньги это не главное",
+          type: ["work"]
+        },
+        {
+          text: "Когда я нервничаю, я предпочитаю принять успокоительное",
+          type: ["drugs"]
+        },
+        {
+          text: "Если бы я мог, то все время занимался бы компьютером",
+          type: ["computer"]
+        },
+        {
+          text: "Я – курильщик со стажем",
+          type: ["smoke"]
+        },
+        {
+          text: "Я беспокоюсь за здоровье близких, стараюсь привлечь их к здоровому образу жизни",
+          type: ["pgm"]
+        },
+        {
+          text: "По интенсивности ощущений наркотик не может сравниться ни с чем",
+          type: ["drugs"]
+        },
+        {
+          text: "Глупо пытаться показать свою силу воли и отказаться от различных радостей жизни",
+          type: ["smoke","alcohol","drugs","games"]
+        }
+        ];
+
+        var questionNum = 0;
+        var forwardButton = $(".btn-forward");
+        var backwardButton = $(".btn-backward");
+        $(".btn-group button").click(function () {
+            $("#answerValue").val($(this).text());
+        });
+        $(".btn-begin-test").click(function(){
+          $(this).hide();
+          $("#questionNo").show();
+          forwardButton.css("visibility","visible");
+          //$("#answer").css("visibility","visible");
+          $(".lead").text(questions[questionNum].text);
+        });
+        $(".btn-forward").click(function(){
+            backwardButton.css("visibility","visible");
+
+            if(questions[questionNum].type != "initial")
+            {
+              questions[questionNum].answer = $("input:radio[name=answers]:checked").attr("val");
+            } else {
+              switch(questionNum)
+              {
+                case 1:
+                  questions[questionNum].answer = $("input:radio:checked","#gender").val();
+                  break;
+                case 2:
+                  questions[questionNum].answer = $("input:radio:checked","#age").val();
+                  break;
+                case 3:
+                  questions[questionNum].answer = $("input:radio:checked","#age").val();
+                  break;
+                case 4:
+                  questions[questionNum].answer = $("input","#family").val();
+                  break;
+                case 5:
+                  questions[questionNum].answer = $("select","#education").val();
+                  break;
+                case 6:
+                  questions[questionNum].answer = $("select","#work").val();
+                  break;
+                case 7:
+                  questions[questionNum].answer = $("input:radio:checked","#health").val();
+                  break;
+                case 8:
+                  questions[questionNum].answer = $("input:radio:checked","#drink").val();
+                  break;
+                case 9:
+                  questions[questionNum].answer = $("input:radio:checked","#smoke").val();
+                  break;
+              }
+            }
+
+            questionNum++;
+
+            if(questions[questionNum].type != "initial" && questions[questionNum].answer)
+            {
+              $("input:radio[name=answers][val=" + questions[questionNum].answer + "]").click();
+            }
+
+            if(questions[questionNum].type != "initial")
+            {
+              //$("#answer").css("visibility","visible");
+              $("#answer").css("display","inline-block");
+            }
+
+            $(".lead").text(questions[questionNum].text);
+
+            if(questionNum >= questions.length - 1)
+            {
+              $(this).hide();
+              $(".btn-end-test").show();
+            }
+        });
+        $(".btn-backward").click(function(){
+          questionNum--;
+          if(questions[questionNum].type == "initial")
+          {
+            //$("#answer").css("visibility","hidden");
+            $("#answer").hide();            
+          } else {
+              $("input:radio[name=answers][val=" + questions[questionNum].answer + "]").click();        
+          }
+          if(!questionNum)
+            backwardButton.css("visibility","hidden");
+
+          $(".lead").text(questions[questionNum].text);
+        });
+
+        $("a").click(function()
+        {
+            $("#questionNo").text((questionNum + 1) + "/" + (questions.length));
+
+            if(questions[questionNum].type == "initial")
+            {
+              $("#initial > .btn-group").hide();
+
+              switch(questionNum)
+              {
+                case 1:
+                  $("#gender").css("display","inline-block");
+                  break;
+                case 2:
+                  $("#age").css("display","inline-block");
+                  break;
+                case 3:
+                  $("#family").css("display","inline-block");
+                  break;
+                case 4:
+                  $("#education").css("display","inline-block");
+                  break;
+                case 5:
+                  $("#work").css("display","inline-block");
+                  break;
+                case 6:
+                  $("#salary").css("display","inline-block");
+                  break;                  
+                  case 7:
+                    $("#health").css("display","inline-block");
+                  break;
+                  case 8:
+                    $("#drink").css("display","inline-block");
+                  break;
+                  case 9:
+                    $("#smoke").css("display","inline-block");
+                  break;                          
+                default: ;
+              }
+            }
+        });
+  
+        var end = 0;
+        $(".btn-end-test").click(function(){
+          if(end == 0)
+          {
+            questions[questionNum].answer = $("input:radio[name=answers]:checked").attr("val");
+
+            var results = [];
+            var norm = [];
+            $.map( questions.slice(11), function( val, i ) {
+              $.each(val.type, function(j, type){
+                if(!results[type])
+                  results[type] = 0;
+                if(!norm[type])
+                  norm[type] = 0;
+                results[type] += parseInt(val.answer);
+                norm[type]++;
+              });
+
+              return parseInt(val.answer);
+            });
+            for(var i in results)
+              results[i] /= norm[i];
+
+            if(results["alcohol"] > 3.5)
+              $(".main").append("<img src=\"http://allpravda.info/images/thumbs/45_450_0_1.jpg\"/>");
+            if(results["drugs"] > 3.5)
+              $(".main").append("<img src=\"http://demotivators.to/media/posters/3458/970151_da-nee-mam.jpg\"/>");
+            if(results["drugs"] > 3.5)
+              $(".main").append("<img src=\"http://demotivators.to/media/posters/3458/970151_da-nee-mam.jpg\"/>");
+            if(results["computer"] > 3.5)
+              $(".main").append("<img src=\"http://www.gamer.ru/system/attached_images/images/000/406/964/original/%D0%B3%D0%B5%D0%B9%D0%BC%D0%B5%D1%80-3.jpg?1312969589\"/>");   
+            if(results["computer"] > 3.5)
+              $(".main").append("<img src=\"http://www.gamer.ru/system/attached_images/images/000/406/964/original/%D0%B3%D0%B5%D0%B9%D0%BC%D0%B5%D1%80-3.jpg?1312969589\"/>");                 
+            if(results["food"] > 3.5)
+              $(".main").append("<img src=\"http://forum.allsiemens.com/files/_____________154.jpg\"/>");  
+            if(results["foreveralone"] > 3.5)
+              $(".main").append("<img src=\"http://img638.imageshack.us/img638/5173/foreveralone01.jpg\"/>");
+            if(results["games"] > 3.5)
+              $(".main").append("<img src=\"http://anticache.img0.joyreactor.cc/pics/post/%D0%9A%D0%BE%D0%BC%D0%B8%D0%BA%D1%81%D1%8B-pearls-before-swine-%D0%BA%D0%B0%D0%B7%D0%B8%D0%BD%D0%BE-553430.png\"/>");
+            if(results["smoke"] > 3.5)
+              $(".main").append("<img src=\"http://img1.joyreactor.cc/pics/post/%D0%B4%D0%B5%D0%BC%D0%BE%D1%82%D0%B8%D0%B2%D0%B0%D1%82%D0%BE%D1%80%D1%8B-%D0%B1%D1%80%D0%B5%D0%B4-%D1%81%D0%B8%D0%B3%D0%B0%D1%80%D0%B5%D1%82%D1%8B-%D0%BF%D0%B5%D1%81%D0%BE%D1%87%D0%BD%D0%B8%D1%86%D0%B0-133281.jpeg\"/>");
+            if(results["tv"] > 3.5)
+              $(".main").append("<img src=\"http://img2.joyreactor.cc/pics/post/%D0%B4%D0%B5%D0%BC%D0%BE%D1%82%D0%B8%D0%B2%D0%B0%D1%82%D0%BE%D1%80%D1%8B-%D0%BF%D1%80%D0%BE-%D1%80%D0%BE%D1%81%D1%81%D0%B8%D1%8E-%D0%B2%D1%80%D0%B5%D0%BC%D1%8F-%D1%81%D0%BC%D0%B5%D1%88%D0%BD%D1%8B%D0%B5-%D0%B4%D0%B5%D0%BC%D0%BE%D1%82%D0%B8%D0%B2%D0%B0%D1%82%D0%BE%D1%80%D1%8B-%D0%B7%D0%BE%D0%BC%D0%B1%D0%BE%D1%8F%D1%89%D0%B8%D0%BA-4582.jpeg\"/>");
+            if(results["work"] > 3.5)
+              $(".main").append("<img src=\"http://kolyan.net/uploads/posts/2011-05/1305705874_1305690208_1261822596_demotivator027.jpg\"/>");
+            if(results["sex"] > 3.5)
+              $(".main").append("<img src=\"http://cs616420.vk.me/v616420738/469/wDd5hAGJk0U.jpg\"/>");                                              
+            end = 1;
+          }
+        });
+      });
+    </script>
+
+    <style type="text/css">
+      .btn-forward{
+        float: right;
+      }
+      .btn-backward{
+        float: left;
+      }
+      .btn-forward,.btn-backward{
+        visibility: hidden;
+      }
+      .btn-end-test{
+        display:none;
+        float:right;
+      }
+      #answer{
+        /*visibility: hidden;*/
+        display: none;
+      }
+      #questionNo{
+        display: none;
+      }
+      #initial{
+        position: relative;
+        margin-left: 120px;
+        margin-right: 120px;
+      }
+
+      #initial .btn-group{
+        display: none;
+      }
+    </style>
+
+</head>
+<body>
+<div class="container text-center main">
+  <div class="header">
+    <h3 class="text-muted">Слаанеш-тест</h3>
+  </div>
+  <div class="jumbotron">
+    <div id="question" class="container text-center">
+      <p class="text-muted" id="questionNo">
+      </p>
+      <p class="lead">
+      Вашему вниманию предлагается тестирование, показывающее наличие склонности к той или иной зависимости.
+      </p>
+    </div>
+
+    <div id="controls" class="container text-center">
+        <a class="btn btn-lg btn-success btn-backward" href="#">Назад</a>
+        <a class="btn btn-lg btn-success btn-forward" href="#">Вперед</a>
+        <a class="btn btn-lg btn-success btn-end-test" href="#">Закончить тест</a>
+        
+        <div id="initial" class="text-center">
+          <div class="btn-group" data-toggle="buttons" id="gender">
+            <label class="btn btn-primary">
+              <input type="radio" name="options" id="male" val="Мужской"> Мужской
+            </label>
+            <label class="btn btn-primary">
+              <input type="radio" name="options" id="female" val="Женский"> Женский
+            </label>
+          </div>
+
+          <div class="btn-group" data-toggle="buttons" id="age">
+            <label class="btn btn-primary">
+              <input type="radio" name="options" id="first">18-24
+            </label>
+            <label class="btn btn-primary">
+              <input type="radio" name="options" id="second">24-36
+            </label>
+            <label class="btn btn-primary">
+              <input type="radio" name="options" id="third">36-48
+            </label>
+            <label class="btn btn-primary">
+              <input type="radio" name="options" id="fourth">48-60
+            </label>  
+            <label class="btn btn-primary">
+              <input type="radio" name="options" id="fives">свыше 60 лет
+            </label>         
+          </div>
+
+          <div class="btn-group" id="family">
+            <input type="text" class="form-control" placeholder="Количество человек" autofocus>    
+          </div>
+
+          <div class="btn-group" data-toggle="buttons" id="education">
+            <select>
+              <option value="неполное среднее">неполное среднее</option>
+              <option value="среднее">среднее</option>
+              <option value="среднее специальное">среднее специальное</option>
+              <option value="незаконченное высшее">незаконченное высшее</option>
+              <option value="высшее">высшее</option>
+              <option value="наличие степени">наличие степени</option>
+            </select>              
+          </div>
+
+          <div class="btn-group" data-toggle="buttons" id="work">
+            <select>
+              <option value="Пенсионер (в том числе по инвалидности)">Пенсионер (в том числе по инвалидности)</option>
+              <option value="Учащийся, студент">Учащийся, студент</option>
+              <option value="Временно не работаю, безработный">Временно не работаю, безработный</option>
+              <option value="Занят домашним хозяйством, нахожусь в декретном отпуске">Занят домашним хозяйством, нахожусь в декретном отпуске</option>
+              <option value="Квалифицированный рабочий, включая сельское хозяйство">Квалифицированный рабочий, включая сельское хозяйство</option>
+              <option value="Неквалифицированный рабочий, включая сельское хозяйство">Неквалифицированный рабочий, включая сельское хозяйство</option>
+              <option value="Служащие без высшего образования">Служащие без высшего образования</option>
+              <option value="Специалист с высшим образованием в коммерческом секторе">Специалист с высшим образованием в коммерческом секторе</option>
+              <option value="Специалист с высшим образованием – бюджетник">Специалист с высшим образованием – бюджетник</option>
+              <option value="Военнослужащий в армии, органах внутренних дел, включая полицию">Военнослужащий в армии, органах внутренних дел, включая полицию</option>
+              <option value="Бизнесмен, предприниматель">Бизнесмен, предприниматель</option>
+              <option value="Государственный или муниципальный служащий">Государственный или муниципальный служащий</option>       
+              <option value="Затрудняюсь ответить">Затрудняюсь ответить</option>         
+            </select>              
+          </div>
+
+          <div class="btn-group" data-toggle="buttons" id="salary">
+            <select>
+              <option value="от 30 000 до 50 000">от 30 000 до 50 000</option>
+              <option value="от 50 000 до 100 000">от 50 000 до 100 000</option>
+              <option value="от 100 000 до 150 000">от 100 000 до 150 000</option>
+              <option value="свыше 150 000">свыше 150 000</option>
+            </select>              
+          </div>
+
+          <div class="btn-group" data-toggle="buttons" id="health">
+            <label class="btn btn-primary">
+              <input type="radio" name="options" id="healthfull">Здоров, занимаюсь спортом
+            </label>
+            <label class="btn btn-primary">
+              <input type="radio" name="options" id="approxhealthy">Практически здоров
+            </label>
+            <label class="btn btn-primary">
+              <input type="radio" name="options" id="ill">Болен
+            </label>
+          </div>
+          <div class="btn-group" data-toggle="buttons" id="drink">
+            <label class="btn btn-primary">
+              <input type="radio" name="options" id="dontdrink">Не употребляю
+            </label>
+            <label class="btn btn-primary">
+              <input type="radio" name="options" id="approxDontDrink">Редко (праздники)
+            </label>
+            <label class="btn btn-primary">
+              <input type="radio" name="options" id="drink">Часто
+            </label>
+          </div>
+          <div class="btn-group" data-toggle="buttons" id="smoke">
+            <label class="btn btn-primary">
+              <input type="radio" name="options" id="smoke">Да, часто
+            </label>
+            <label class="btn btn-primary">
+              <input type="radio" name="options" id="approxDontSmoke">Да, редко
+            </label>
+            <label class="btn btn-primary">
+              <input type="radio" name="options" id="dontSmoke">Нет
+            </label>
+          </div>                
+        </div>
+
+        <div id="answer" class="btn-group" data-toggle="buttons">
+          <label class="btn btn-primary">
+            <input type="radio" name="answers" id="no" val=1> Нет
+          </label>
+          <label class="btn btn-primary">
+            <input type="radio" name="answers" id="probablyNo" val=2> Скорее нет
+          </label>
+          <label class="btn btn-primary">
+            <input type="radio" name="answers" id="hz" val=3> Ни да, ни нет
+          </label>
+          <label class="btn btn-primary">
+            <input type="radio" name="answers" id="probablyYes" val=4> Скорее да
+          </label>
+          <label class="btn btn-primary">
+            <input type="radio" name="answers" id="Yes" val=5> Да
+          </label>
+        </div>
+
+        </div>
+
+        <div class="text-center">
+            <a class="btn btn-lg btn-success btn-begin-test" href="#">Начать тест</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>
