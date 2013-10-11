@@ -516,14 +516,12 @@
             for(var i in results)
               results[i] /= norm[i];
 
+            /*var img = ""
+
             if(results["alcohol"] > 3.5)
               $(".main").append("<img src=\"http://allpravda.info/images/thumbs/45_450_0_1.jpg\"/>");
             if(results["drugs"] > 3.5)
               $(".main").append("<img src=\"http://demotivators.to/media/posters/3458/970151_da-nee-mam.jpg\"/>");
-            if(results["drugs"] > 3.5)
-              $(".main").append("<img src=\"http://demotivators.to/media/posters/3458/970151_da-nee-mam.jpg\"/>");
-            if(results["computer"] > 3.5)
-              $(".main").append("<img src=\"http://www.gamer.ru/system/attached_images/images/000/406/964/original/%D0%B3%D0%B5%D0%B9%D0%BC%D0%B5%D1%80-3.jpg?1312969589\"/>");   
             if(results["computer"] > 3.5)
               $(".main").append("<img src=\"http://www.gamer.ru/system/attached_images/images/000/406/964/original/%D0%B3%D0%B5%D0%B9%D0%BC%D0%B5%D1%80-3.jpg?1312969589\"/>");                 
             if(results["food"] > 3.5)
@@ -539,7 +537,9 @@
             if(results["work"] > 3.5)
               $(".main").append("<img src=\"http://kolyan.net/uploads/posts/2011-05/1305705874_1305690208_1261822596_demotivator027.jpg\"/>");
             if(results["sex"] > 3.5)
-              $(".main").append("<img src=\"http://cs616420.vk.me/v616420738/469/wDd5hAGJk0U.jpg\"/>");                                              
+              $(".main").append("<img src=\"http://cs616420.vk.me/v616420738/469/wDd5hAGJk0U.jpg\"/>");                */
+	    
+            $(".jumbotron").empty().append("Спасибо за прохождение теста! Ваш результат: " + results);                           
             end = 1;
           }
         });
